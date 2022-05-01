@@ -1,1 +1,1 @@
-# challenege3-password-generator
+# challenge3-password-generator
