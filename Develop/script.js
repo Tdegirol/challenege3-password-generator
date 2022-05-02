@@ -37,15 +37,11 @@ function generatePassword(){
   var lowercase = window.confirm("Would you like the password to contain lowercase letters?");
   if (lowercase == true){
     var confirmlow = "Lowercase letters";
-    console.log(confirmlow);
-    console.log(alphabetlower);
-    console.log(alphabetupper);
-    console.log(numbers);
-    console.log(specialchar);
+
     dataset.push(alphabetlower);
     
     var lower = getRandom(alphabetlower.length);
-    // console.log(dataset[lower]);
+    console.log(dataset[lower]);
   }
   else{
     var confirmlow = "NO lowercase letters";
@@ -79,7 +75,7 @@ function generatePassword(){
   }
 
     if (special == true || lowercase == true || uppercase == true || numeric == true){
-      var finalconfirm = window.confirm("Your password will contain: "+ "\n" + confirmlow + "\n" + confirmup + "\n" + confirmnum + "\n" + confirmspecial + "\n"+ pwlength + " Total characters" + "\nIf this is acceptable please click OK.");
+      window.confirm("Your password will contain: "+ "\n" + confirmlow + "\n" + confirmup + "\n" + confirmnum + "\n" + confirmspecial + "\n"+ pwlength + " Total characters" + "\nIf this is acceptable please click OK.");
   } else{
     window.alert("ERROR: You must select at least one character type, please try again.");
     return;
