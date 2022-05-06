@@ -80,18 +80,17 @@ function generatePassword(){
 
 //CREATE PASSWORD
 //top for loop will use the nested loop's # 1 thru 4 to decide which array element to choose a random character from
-for (var i=0; i<pwlength; i++){
-  //for loop below will get random # between 1 and 4 based on criteria user chose, this determines which element of dataset to use
-  // for (var x=0; x<dataset.length; x++){
-    var randElement = getRandom(dataset.length);
-    //below will get random character of the element chosen from loop above
-    var randChar = getRandom(dataset[randElement].length);
-    password.push(dataset[randElement][randChar]);
-    console.log(password);
-  // }
-}
+  for (var i=0; i<pwlength; i++){
+    //below will get random # between 1 and 4 based on criteria user chose, this determines which element of dataset to use
 
-  return(password);
+      var randElement = getRandom(dataset.length);
+      //below will get random character of the element chosen from loop above
+      var randChar = getRandom(dataset[randElement].length);
+      password.push(dataset[randElement][randChar]);
+      console.log(password);
+
+  }
+  return(password.join(''));
 }
 // Write password to the #password input
 function writePassword() {
