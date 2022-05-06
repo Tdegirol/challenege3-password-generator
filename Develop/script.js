@@ -3,7 +3,7 @@ var generateBtn = document.querySelector("#generate");
 
 function getRandom(max){
   var random = Math.random()*max;
-  return Math.floor(random)+1;
+  return Math.floor(random);
 }
 
 //generatePassword function - get user input for password criteria, then create password
@@ -28,22 +28,21 @@ function generatePassword(){
   var numbers = [0,1,2,3,4,5,6,7,8,9]
   var specialchar = ['!','@','#','$','%',"^","&","*","(",")",'-','_','+','=','[',']','{','}',';',':','"',"'",',','.','/','<','>','?','`','~','|']
   
+  var password = [];
+  var randElement = [];
+  var randChar = [];
   var dataset = [];
-  var lower = [];
-  var upper = [];
-  var num = [];
-  var spec = [];
+  var char = [];
+
+  //based on length of input (8 for example) pick random # of dataset.
+  //Random choice of dataset array (picking 1 element. will be 0 to 3 pending user inputs)
+  //random choice of each element (go into array of one that was chosen, and choose random character of that array)
 
   var lowercase = window.confirm("Would you like the password to contain lowercase letters?");
   if (lowercase == true){
     var confirmlow = "Lowercase letters";
-
     dataset.push(alphabetlower);
-    
-    var lower = getRandom(alphabetlower.length);
-    console.log(dataset[lower]);
-  }
-  else{
+  } else{
     var confirmlow = "NO lowercase letters";
   }
 
@@ -51,8 +50,7 @@ function generatePassword(){
   if (uppercase == true){
     var confirmup = "Uppercase letters";
     dataset.push(alphabetupper);
-  }
-  else{
+  } else{
     var confirmup = "NO uppercase letters";
   }
 
@@ -60,8 +58,7 @@ function generatePassword(){
   if (numeric == true){
     var confirmnum = "Numbers";
     dataset.push(numbers);
-  }
-  else{
+  } else{
     var confirmnum = "NO numbers";
   }
 
@@ -69,12 +66,11 @@ function generatePassword(){
   if (special == true){
     var confirmspecial = "Special characters";
     dataset.push(specialchar);
-  }
-  else{
+  } else{
     var confirmspecial = "NO special characters";
   }
 
-    if (special == true || lowercase == true || uppercase == true || numeric == true){
+  if (special == true || lowercase == true || uppercase == true || numeric == true){
       window.confirm("Your password will contain: "+ "\n" + confirmlow + "\n" + confirmup + "\n" + confirmnum + "\n" + confirmspecial + "\n"+ pwlength + " Total characters" + "\nIf this is acceptable please click OK.");
   } else{
     window.alert("ERROR: You must select at least one character type, please try again.");
@@ -83,20 +79,18 @@ function generatePassword(){
 //END GATHERING AND CONFIRMATION OF PASSWORD CRITERIA
 
 //CREATE PASSWORD
-
-
-  // let specialchar = [];
-  // for (let i=32; i<127; i++)
-  //   specialchar.push(String.fromCharCode(i));
-  //console.log(lowercase,uppercase,numeric,special,length,specialchar);
-
-  // var password = [];
-  // for (let i = 0; i<pwlength; i++){
-
+//top for loop will use the nested loop's # 1 thru 4 to decide which array element to choose a random character from
+for (var i=0; i<pwlength; i++){
+  //for loop below will get random # between 1 and 4 based on criteria user chose, this determines which element of dataset to use
+  // for (var x=0; x<dataset.length; x++){
+    var randElement = getRandom(dataset.length);
+    //below will get random character of the element chosen from loop above
+    var randChar = getRandom(dataset[randElement].length);
+    password.push(dataset[randElement][randChar]);
+    console.log(password);
   // }
+}
 
-  console.log(dataset);
-  password = dataset;
   return(password);
 }
 // Write password to the #password input
@@ -106,7 +100,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-  return(password)
+  return(password);
 }
 
 // Add event listener to generate button
