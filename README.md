@@ -19,11 +19,11 @@ To view the website please follow the link below:
 
 This project is a random password generator. Depending on the criteria that the user selects, the password can be between 8 and 128 characters, contain lowercase letters, uppercase letters, numbers, or special characters - as shown below:
 
-![Media-Queries-Image](assets/images/criteria.jpg)
+![Media-Queries-Image](Assets/images/criteria.jpg)
 
 The final password is randomly selected based on the user's input. Each character is a random choice that may be any of the possible inputs the user has declared. One example of a 10 character long password with any possible character type is shown below:
 
-![Media-Queries-Image](assets/images/example.jpg)
+![Media-Queries-Image](Assets/images/example.jpg)
 
 ## Credits
 
